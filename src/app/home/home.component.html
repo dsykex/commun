@@ -1,19 +1,56 @@
 <div class="middle">
-  
-  <div class="row text-center">
-      <img src="../../assets/logo.png" alt="" class="logo text-center" />
-      <h4 class="landing-msg" *ngIf="hasUser">Our <i>Creative Playground</i> initiative has proven to be a reliable way to not only promote the talent and passion of those who are amongst us in this journey of innovative campaigning, but has become a major key and showing others what it means to truly master your craft. Join us on our mission to a creating better and more artistic Columbus experience!</h4>
-      <h4 class="landing-msg" *ngIf="!hasUser">Got a passion or talent? Love being original and innovative? Creative Playground may have a place for you.</h4>
-      
-      <div style="margin-top: 10px;" class="large-12 medium-12 small-12 columns" *ngIf="!hasUser">
-          <input type="text" [(ngModel)]="user.name" placeholder="Whats your name/alias?">
-          <input type="email" [(ngModel)]="user.email" placeholder="Email">
-          <input type="password" [(ngModel)]="user.password" placeholder="Password">
-          <input type="password" [(ngModel)]="user.conf_password" placeholder="Confirm Password">
-          <button class="large button" class="yellow-button" (click)="join()">JOIN IN</button>
+
+  <div class="row">
+    <div class="columns medium-12 small-12 large-expand">
+        <img src="../../assets/logo.png" alt="" class="logo animated fadeIn" />
+      <h4 class="landing-msg text-center animated fadeIn" *ngIf="hasUser">Our <i>Creative Playground</i> initiative has proven to be a reliable way to not only promote the talent and passion of those who are amongst us in this journey of innovative campaigning, but has become a major key and showing others what it means to truly master your craft. Join us on our mission to a creating better and more artistic Columbus experience!</h4>
+      <h4 class="landing-msg text-center animated fadeIn" *ngIf="!hasUser">Join our creative cloud and share your ideas and interests you would love to see us put in action.</h4>
+     
+      <div *ngIf="!hasUser">
+        <div *ngIf="signUpActive" class="animated fadeIn">
+          <div style="margin-top: 10px;" *ngIf="!hasUser">
+              <input type="text" [(ngModel)]="user.first_name" placeholder="First Name" required>
+              <input type="text" [(ngModel)]="user.last_name" placeholder="Last Name" required>
+              <input type="email" [(ngModel)]="user.email" placeholder="Email" required>
+              
+              <input type="password" [(ngModel)]="user.password" placeholder="Password" required>
+              <input type="password" [(ngModel)]="user.conf_password" placeholder="Confirm Password" required>
+              <button class="large button" class="yellow-button" (click)="join()" (ngSubmit)="join()">JOIN</button>
+          </div>
+        </div>
+        <div *ngIf="loginActive" class="animated fadeIn">
+            <div style="margin-top: 10px;" *ngIf="!hasUser">
+                <input type="email" [(ngModel)]="user.email" placeholder="Email" required>
+                <input type="password" [(ngModel)]="user.password" placeholder="Password" required>
+                <button class="large button" class="yellow-button" (click)="join()" (ngSubmit)="join()">LOGIN</button>
+            </div>
+        </div>
+        <div class="row reg-wrapper animated bounceInUp">
+          
+          <div class="large-6 medium-6 small-12">
+            <a class="reg-links" (click)="showLogin()">Have an account? Login.</a>
+          </div>
+          <div class="large-6 medium-6 small-12">
+            <a class="reg-links" (click)="showSignup()">Need an account? Signup.</a>
+          </div>
+        </div>
+        <h5 class="text-center errorMsg">{{errorMsg}}</h5>
       </div>
       <div class="large-12 medium-6 small-12 columns" *ngIf="user.email">
           
       </div>
+    
+    <!--<form *ngIf="!hasUser" [formGroup]="formdata" (ngSubmit) = "onClickSubmit(formdata.value)" >
+        <input type="text" class="fortextbox" name="name" placeholder="Name" formControlName="name">
+       
+        <input type="email" class="fortextbox" name="email" placeholder="Email" formControlName="email">
+ 
+        <input type="password" class="fortextbox" name="password" placeholder="Password" formControlName="password">
+     
+        <input type="password" class="fortextbox" name="conf_password" placeholder="Confirm Password" formControlName="conf_password">
+       
+        <input type="submit" class="yellow-button button" style="margin-top:20px; height:70x;" [disabled] = "!formdata.valid" value="JOIN">
+    </form>-->
     </div>
+  </div>
 </div>

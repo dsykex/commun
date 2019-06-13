@@ -1,3 +1,5 @@
+$primary_color: #f9f100;
+
 .middle
 {
     position:fixed;
@@ -15,11 +17,37 @@
     text-shadow: 2px 1px 5px rgba(0,0,0.8);
 }
 
-
+.logo
+{
+    text-align: center;
+    margin-bottom: 50px;
+}
 
 input{
-    opacity:0.7;
+    transition: all 0.3s ease-in-out;
+    opacity:0.5;
     border-radius:20px;
     padding:10px;
     height: 50px;
+}
+
+.reg-wrapper
+{
+    padding:5px;
+    border-radius:7px;
+    margin-top:12px;
+    background:rgba(0,0,0,0.7);
+}
+
+.reg-wrapper a {
+    color:$primary_color; 
+    text-shadow:2px 2px 3px rgba(0,0,0,0.6);
+}
+
+input:hover{
+    opacity:0.9;
+}
+
+input:focus{
+    opacity:0.9;
 }
