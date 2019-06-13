@@ -1,0 +1,19 @@
+<div class="middle">
+  
+  <div class="row text-center">
+      <img src="../../assets/logo.png" alt="" class="logo text-center" />
+      <h4 class="landing-msg" *ngIf="hasUser">Our <i>Creative Playground</i> initiative has proven to be a reliable way to not only promote the talent and passion of those who are amongst us in this journey of innovative campaigning, but has become a major key and showing others what it means to truly master your craft. Join us on our mission to a creating better and more artistic Columbus experience!</h4>
+      <h4 class="landing-msg" *ngIf="!hasUser">Got a passion or talent? Love being original and innovative? Creative Playground may have a place for you.</h4>
+      
+      <div style="margin-top: 10px;" class="large-12 medium-12 small-12 columns" *ngIf="!hasUser">
+          <input type="text" [(ngModel)]="user.name" placeholder="Whats your name/alias?">
+          <input type="email" [(ngModel)]="user.email" placeholder="Email">
+          <input type="password" [(ngModel)]="user.password" placeholder="Password">
+          <input type="password" [(ngModel)]="user.conf_password" placeholder="Confirm Password">
+          <button class="large button" class="yellow-button" (click)="join()">JOIN IN</button>
+      </div>
+      <div class="large-12 medium-6 small-12 columns" *ngIf="user.email">
+          
+      </div>
+    </div>
+</div>
