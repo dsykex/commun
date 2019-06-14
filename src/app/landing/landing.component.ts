@@ -26,7 +26,8 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() 
   {
-    //firebase.auth().signOut().then(()=>{});
+    this.loginActive=true;
+    firebase.auth().signOut().then(()=>{});
     firebase.auth().onAuthStateChanged(authData => {
       console.log(authData);
       if(authData)
@@ -68,14 +69,19 @@ export class LandingComponent implements OnInit {
   {
     firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(() => {
       this.router.navigateByUrl('/home');
+    }).catch(()=> {
+      this.errorMsg = 'An error occured. Please check your login credentials and network and try again.';
+      setTimeout(() => {
+        this.errorMsg = '';
+      },3000);
     });
   }
 
   join()
   {
-    if(this.user.email && this.user.first_name && this.user.last_name && this.user.password && this.user.conf_password)
+    if(this.user.email && this.user.first_name && this.user.last_name && this.user.password && this.user.confirm_password)
     {
-      if(this.user.password == this.user.conf_password)
+      if(this.user.password == this.user.confirm_password)
       {
         let db = firebase.firestore();
         let users = db.collection('users');
