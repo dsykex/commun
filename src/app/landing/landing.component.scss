@@ -2,12 +2,13 @@ $primary_color: #f9f100;
 
 .middle
 {
-    position:fixed;
-    top:50%;
+    position:absolute;
+    top:30%;
     left:50%;
     margin:0;
+    padding:10px;
     text-align: center;
-    transform:translate(-50%, -50%);
+    transform:translate(-50%, -30%);
 }
 
 .landing-msg
@@ -35,7 +36,7 @@ input{
 {
     padding:5px;
     border-radius:7px;
-    margin-top:12px;
+    margin-top:80px;
     background:rgba(0,0,0,0.7);
 }
 

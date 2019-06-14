@@ -1,0 +1,50 @@
+.sidebar
+{
+    background:rgba(0,0,0,0.4);
+    height:100%;
+    padding:20px;
+    border-radius:10px;
+}
+
+.interest-input
+{
+    border-radius:11px;
+    background:(255,255,255,0.7);
+    padding:10px;
+    height:70px;
+}
+
+.breadcrumbs li a{
+    color:#fff;
+}
+
+.post{
+    background:rgba(255,255,255,0.8);
+    padding:15px;
+    width:100%;
+    border-radius:255;
+    box-shadow:1px 1px 9px rgba(0,0,0,0.6);
+}
+
+.post-wrapper
+{
+    margin-top:70px;
+}
+
+.avatar
+{
+    background:rgba(0,0,0,0.4);
+    border-radius:50%;
+    border:#2582fc;
+    width:100px;
+    height: 100px;
+}
+
+.header
+{
+    border:none;
+    padding:15px;
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    padding:10px;
+}

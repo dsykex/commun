@@ -26,23 +26,24 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() 
   {
-
+    //firebase.auth().signOut().then(()=>{});
     firebase.auth().onAuthStateChanged(authData => {
       console.log(authData);
       if(authData)
       {
         this.hasUser = true;
+        this.router.navigateByUrl('/home');
       }
       else
       {
         this.hasUser=false;
 
-        this.formdata = new FormGroup({
+        /*this.formdata = new FormGroup({
           email: new FormControl("", Validators.compose([ Validators.required, Validators.pattern("[^ @]*@[^ @]*") ])),
           password: new FormControl("", Validators.compose([ Validators.required ])),
           name: new FormControl("", Validators.compose([ Validators.required ])),
           conf_password: new FormControl("", Validators.compose([ Validators.required ])),
-        });
+        });*/
       }
     });
   }
@@ -65,9 +66,9 @@ export class LandingComponent implements OnInit {
 
   login()
   {
-    firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(()=>{
-      this.router.navigateByUrl('');
-    })
+    firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(() => {
+      this.router.navigateByUrl('/home');
+    });
   }
 
   join()
@@ -89,12 +90,12 @@ export class LandingComponent implements OnInit {
           };
 
           users.doc(this.user.email).set(newUser).then(()=> {
-            firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(()=>{
-              this.router.navigateByUrl('');
+            firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(() => {
+              this.router.navigateByUrl('/login');
             });
           }).catch(() => { });
         }).catch(()=>{
-          this.errorMsg = 'An error occured processing your request. Either an an account exists under that email or a network issue occured. Please try again.';
+          this.errorMsg = 'An error occured processing your request. Either an an account exists under that email, a network related problem, or something internal. Please try again.';
         setTimeout(() => {
           this.errorMsg = '';
         },3000);
