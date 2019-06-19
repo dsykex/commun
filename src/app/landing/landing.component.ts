@@ -27,7 +27,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() 
   {
     this.loginActive=true;
-    firebase.auth().signOut().then(()=>{});
+    //firebase.auth().signOut().then(()=>{});
     firebase.auth().onAuthStateChanged(authData => {
       console.log(authData);
       if(authData)
@@ -97,7 +97,7 @@ export class LandingComponent implements OnInit {
 
           users.doc(this.user.email).set(newUser).then(()=> {
             firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(() => {
-              this.router.navigateByUrl('/login');
+              this.router.navigateByUrl('/home');
             });
           }).catch(() => { });
         }).catch(()=>{
