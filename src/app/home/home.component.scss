@@ -10,7 +10,7 @@
 {
     background:rgba(0,0,0,0.6);
     padding:20px;
-    height:50px;
+    height:70px;
     text-align:center;
 }
 
@@ -41,15 +41,16 @@
 .close-button
 {
     margin-bottom:30px;
-    
 }
 
-.post{
+.panel {
     background:rgba(255,255,255,0.8);
     padding:15px;
     width:100%;
-    border-radius:255;
-    box-shadow:1px 1px 9px rgba(0,0,0,0.6);
+    border-radius:10px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    box-shadow:1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .post-wrapper
@@ -59,11 +60,11 @@
 
 .avatar
 {
+    text-align: center;
     background:rgba(0,0,0,0.4);
-    border-radius:50%;
+    border-radius:7px;
     border:#2582fc;
-    width:100px;
-    height: 100px;
+    margin:10px;
 }
 
 .header

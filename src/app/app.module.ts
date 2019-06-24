@@ -10,6 +10,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { LandingComponent } from './landing/landing.component';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 export const fbConfig = {
   apiKey: "AIzaSyDdeEahrBiiFWcghRiZRxZWYcTSPCgdYo8",

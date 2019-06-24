@@ -2,27 +2,35 @@
   <div class="row align-items-center" style="height:100%;">
       <div class="col">
           <img src="../../assets/logo.png" width="60" height="30">
-        </div>
+      </div>
   </div>
 </div>
-<div class="container">
-  <div class="userPanel">
+<div class="container panel">
+  <div class="userPanel animated fadeInDown" *ngIf="user.email">
     <div class="row justify-content-md-center d-flex p-2">
       <div class="col-12">
-        <h3>Hello, Dezmen Sykes</h3>
-          <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
-              </ol>
-          </nav>
+        <h3>Hello, {{user.first_name}} {{ user.last_name}}</h3>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-
+      <div class="row"> <!-- CONTENT POSTER -->
+        <div class="col-md-1 col-sm-1 justify-content-center">
+          <img src="../../assets/downtown.jpg" class="img-fluid img-thumbnail mx-auto">
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                <textarea type="text" class="form-control" aria-describedby="post" placeholder="Share your thoughts and interests" [(ngModel)]="post"></textarea>
+            </div>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary btn-md btn-block" (click)="createPost()" >Post</button>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+          
+      </div>
     </div>
   </div>
 </div>

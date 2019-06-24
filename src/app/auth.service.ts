@@ -13,14 +13,13 @@ export class AuthService {
 
   constructor() { }
 
-  public getUserInfo() : Observable<any>
+  public getUserInfo() : Promise<any>
   {
-    let userObs = new Observable(watcher => {
-      firebase.auth().onAuthStateChanged(authData => {
+    let userObs = new Promise(resolve => {
+       firebase.auth().onAuthStateChanged(authData => {
         if(!authData)
         {
-          watcher.next({});
-          watcher.complete();
+          resolve({});
         }
         else
         {
@@ -28,8 +27,7 @@ export class AuthService {
           db.doc(authData.email).get().then(user => { 
             if(user.exists)
             {
-              watcher.next(user.data());
-              watcher.complete();
+              resolve(user.data());
             }
           })
         }
