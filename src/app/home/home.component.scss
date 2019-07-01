@@ -10,13 +10,36 @@
 {
     background:rgba(0,0,0,0.6);
     padding:20px;
-    height:70px;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.greeting-txt
+{
+    font-size:19px;
+}
+
+.ava {
+    height:150px;
+    width:150px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+.ava img {
+    height:150px;
+    width:150px;
     text-align:center;
 }
 
-.userPanel
+.bg
 {
-    margin-top:50px;
+    position: absolute;
+    z-index: -9;
+    width:100%;
+    height:100%;
+    background: #000;
+    opacity:0.4;
 }
 
 .wrapper{
@@ -44,7 +67,7 @@
 }
 
 .panel {
-    background:rgba(255,255,255,0.8);
+    background:rgba(255,255,255,0.6);
     padding:15px;
     width:100%;
     border-radius:10px;

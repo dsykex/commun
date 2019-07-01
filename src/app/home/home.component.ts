@@ -46,6 +46,13 @@ export class HomeComponent implements OnInit, AfterContentInit{
     console.log(this.posts);
   }
 
+  logout()
+  {
+    firebase.auth().signOut().then(()=>{
+      this.router.navigateByUrl('landing');
+    })
+  }
+
   getUInfo()
   {
     /*await new Promise(resolve => {
@@ -66,7 +73,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
 
     let newPost = {
       
-    }
+    };
 
     posts.add(newPost).then(()=> {
 

@@ -1,36 +1,40 @@
-<div class="banner">
-  <div class="row align-items-center" style="height:100%;">
-      <div class="col">
-          <img src="../../assets/logo.png" width="60" height="30">
-      </div>
-  </div>
+<div class="banner animated fadeInDown text-center">
+  <img src="../../assets/logo.png" width="60" height="30">
 </div>
-<div class="container panel">
-  <div class="userPanel animated fadeInDown" *ngIf="user.email">
-    <div class="row justify-content-md-center d-flex p-2">
-      <div class="col-12">
-        <h3>Hello, {{user.first_name}} {{ user.last_name}}</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 d-sm-none d-md-block animated fadeInLeft" *ngIf="user.email">
+      <div class="card py-2">
+        <div class="ava text-center mx-auto">
+          <img src="https://media.istockphoto.com/photos/alien-picture-id667378960?k=6&m=667378960&s=612x612&w=0&h=eWZynItyhYK0ovMG858bdRoKWNgDcRWgsOjBhw6FDro=" class="mx-auto"  alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Hello, {{user.first_name}}</h5>
+          <p class="card-text">Software Engineer & UX Specialist</p>
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                My Posts
+                <span class="badge badge-primary badge-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+               Favorites
+                <span class="badge badge-primary badge-pill">2</span>
+              </li>
+              
+            </ul>
+          <a class="btn btn-secondary btn-sm btn-block" (click)="logout()">Logout</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <div class="row"> <!-- CONTENT POSTER -->
-        <div class="col-md-1 col-sm-1 justify-content-center">
-          <img src="../../assets/downtown.jpg" class="img-fluid img-thumbnail mx-auto">
+    <div class="col-md-9 d-sm-none d-md-block animated fadeInRight" *ngIf="user.email">
+        <form class="mb-4">
+            <textarea class="form-control" id="postArea" rows="6" placeholder="Share your thoughts and interests."></textarea>
+            <button type="button" class="btn btn-secondary float-md-right">Post</button>
+        </form><br>
+        <div class="panel">
+
         </div>
-        <div class="col-md-10">
-            <div class="form-group">
-                <textarea type="text" class="form-control" aria-describedby="post" placeholder="Share your thoughts and interests" [(ngModel)]="post"></textarea>
-            </div>
-        </div>
-        <div class="col">
-            <button type="button" class="btn btn-primary btn-md btn-block" (click)="createPost()" >Post</button>
-        </div>
-      </div>
-      <div class="row justify-content-end">
-          
-      </div>
     </div>
   </div>
 </div>
