@@ -11,11 +11,29 @@ $primary_color: #f9f100;
     transform:translate(-50%, -20%);
 }
 
+.bg-video
+{
+    min-width:100%;
+    min-height:100%;
+    position: fixed;
+    z-index: -5;
+    opacity:0.8;
+}
+
+.bg-overlay
+{
+    background:rgba(0,0,0,0.7);
+    min-width:100%;
+    min-height:100%;
+    position: fixed;
+    z-index: -5;
+    opacity:0.8;
+}
+
 .landing-msg
 {
     font-size:1em;
     color:#fff;
-    text-shadow: 2px 1px 5px rgba(0,0,0.8);
 }
 
 .logo

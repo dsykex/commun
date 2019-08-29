@@ -1,3 +1,7 @@
+<video class="bg-video hide-for-small" #bgVid autoplay muted="muted" loop>
+    <source muted src="../../assets/ink2.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
 <div class="container">
   <div style="padding-top:20%;">
   <div class="row justify-content-center">
@@ -8,7 +12,7 @@
       <p class="landing-msg text-center">Our creative playground is a community of creatives, innovators, and go-getters! Be apart of our growing team and share your talent with those who care.</p>
     </div>
     </div>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center animated fadeIn">
       <div class="col-md-6 col-sm-12">
           <div *ngIf="!hasUser">
               <div *ngIf="signUpActive" class="animated fadeIn">

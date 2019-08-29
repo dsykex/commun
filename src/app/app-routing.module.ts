@@ -4,12 +4,18 @@ import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { LandingComponent } from './landing/landing.component';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupComponent } from './group/group.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'landing', component: LandingComponent},
-  {path: 'user', component: UserComponent}
+  {path: 'my-profile', component: UserComponent},
+  {path: 'profile-settings', component: ProfileSettingsComponent},
+  {path: 'my-groups', component: GroupsComponent},
+  {path: 'group/:name', component: GroupComponent}
 ];
 
 @NgModule({

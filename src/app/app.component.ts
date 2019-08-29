@@ -7,12 +7,10 @@ import { Component, ViewChild, ElementRef, OnInit, AfterContentInit, } from '@an
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('bgVid', {static: true}) vid: ElementRef;
-
   title = 'WWCommunity';
   
   ngOnInit()
   {
-    this.vid.nativeElement.muted = 'muted';
+    
   }
 }

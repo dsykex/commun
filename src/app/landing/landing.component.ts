@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(public fs: AngularFirestore, public http: HttpClient, public router: Router) { }
+  constructor(public fs: AngularFirestore, public http: HttpClient, public router: Router, public zone: NgZone) { 
+    
+  }
+
+  @ViewChild('bgVid', {static: true}) vid: ElementRef;
 
   public user: any = {};
   public hasUser: boolean;
@@ -26,6 +30,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() 
   {
+    //this.vid.nativeElement.muted = 'muted';
     this.loginActive=true;
     //firebase.auth().signOut().then(()=>{});
     firebase.auth().onAuthStateChanged(authData => {
@@ -33,7 +38,9 @@ export class LandingComponent implements OnInit {
       if(authData)
       {
         this.hasUser = true;
-        this.router.navigateByUrl('/home');
+        this.zone.run(() => {
+          this.router.navigateByUrl('home');
+        })
       }
       else
       {

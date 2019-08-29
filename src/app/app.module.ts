@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { LandingComponent } from './landing/landing.component';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupComponent } from './group/group.component';
+import { UsersComponent } from './users/users.component';
 
 export const fbConfig = {
   apiKey: "AIzaSyDdeEahrBiiFWcghRiZRxZWYcTSPCgdYo8",
@@ -27,12 +32,17 @@ export const fbConfig = {
     AppComponent,
     HomeComponent,
     UserComponent,
-    LandingComponent
+    LandingComponent,
+    ProfileSettingsComponent,
+    GroupsComponent,
+    GroupComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    CKEditorModule,
     HttpClientModule,
     AngularFireModule.initializeApp(fbConfig),
     AngularFirestoreModule,

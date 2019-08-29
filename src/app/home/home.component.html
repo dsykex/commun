@@ -1,40 +1,74 @@
-<div class="banner animated fadeInDown text-center">
-  <img src="../../assets/logo.png" width="60" height="30">
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 d-sm-none d-md-block animated fadeInLeft" *ngIf="user.email">
-      <div class="card py-2">
-        <div class="ava text-center mx-auto">
-          <img src="https://media.istockphoto.com/photos/alien-picture-id667378960?k=6&m=667378960&s=612x612&w=0&h=eWZynItyhYK0ovMG858bdRoKWNgDcRWgsOjBhw6FDro=" class="mx-auto"  alt="Card image cap">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-sm-12 d-sm-none d-md-block py-3 position-fixed" id="sticky-sidebar">
+            <div class="row">
+              <div class="col-12 text-center">
+                <div class="avatar text-center m-1">
+                    <img src="../../assets/downtown.jpg" class="img-fluid" />
+                </div>
+                <h4 class="name">{{user.first_name}} {{user.last_name}}</h4>
+                <p class="title">Software Developer, UX Specialist</p>
+                <hr>
+                  <ul class="list-group bg-dark">
+                    <li class="list-group-item bg-dark"><a class="text-white" routerLink="/my-profile">Profile</a></li>
+                    <li class="list-group-item bg-dark"><a class="text-white" routerLink="/my-groups">Groups</a></li>
+                    <li class="list-group-item bg-dark"><a class="text-white" routerLink="/my-requests">Requests</a></li>
+                    <li class="list-group-item bg-dark"><a class="text-white" routerLink="/profile-settings">Profile Settings</a></li>
+                    <li class="list-group-item bg-dark text-white" (click)="logout()" aria-current="page">Logout</li>
+                  </ul>
+              </div>
+            </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Hello, {{user.first_name}}</h5>
-          <p class="card-text">Software Engineer & UX Specialist</p>
-          <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                My Posts
-                <span class="badge badge-primary badge-pill">14</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-               Favorites
-                <span class="badge badge-primary badge-pill">2</span>
-              </li>
-              
-            </ul>
-          <a class="btn btn-secondary btn-sm btn-block" (click)="logout()">Logout</a>
+        <div class="col-md-10 col-sm-12 offset-md-2" id="main">
+          <div class="panel daily-panel text-center">
+              <p class="date">{{dayArray[dayNumber]}} - {{date}}</p>
+              <h2>Inspirational Sharings</h2>
+              <p>Create a post that motivates and inspires you in your day to day creative activities.</p>
+              <button (click)="showEditor = !showEditor"  class="btn btn-primary">Participate</button>
+              <div class="vw-50" *ngIf="showEditor">
+                  <ckeditor *ngIf="showEditor" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'highlight', 'indentBlock', 'alignment' ] }" [editor]="Editor" [(ngModel)]="postData.editorData"></ckeditor>
+                  <a class="btn btn-light" (click)="publishPost()">Post</a>
+              </div>
+            </div>
+            <hr>
+            <div class="row panel">
+              <div class="col-md-1 text-center paddingless">
+                <div class="feed-avatar">
+                    <img src="../../assets/downtown.jpg" class="img-fluid" alt="" />
+                </div>
+              </div>
+              <div class="col-md-11">
+                <h4><small class="feed-user-name">{{user.first_name}} {{user.last_name}} posted,</small> <small class="curation-title mx-3 float-right"><span class="oi oi-people"></span> Graphic Designers</small></h4><br>
+                <div class="post-content py-2">
+                    <p class="post-caption">Nice piece of work by your truly!</p>
+                    <img class="post-attachment" src="../../assets/Chip-NSG.png" class="img-fluid" />
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="col-md-9 d-sm-none d-md-block animated fadeInRight" *ngIf="user.email">
-        <form class="mb-4">
-            <textarea class="form-control" id="postArea" rows="6" placeholder="Share your thoughts and interests."></textarea>
-            <button type="button" class="btn btn-secondary float-md-right">Post</button>
-        </form><br>
-        <div class="panel">
+</div>
+<!--<div class="container-fluid text-center" style="padding:0px;">
 
-        </div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 animated fadeInDown">
+      
     </div>
   </div>
-</div>
+  <br>
+  <div class="row panel">
+    <div class="col-md-2 text-center">
+      <div class="avatar">
+        
+          <img src="../../assets/downtown.jpg" class="img-fluid" alt="" />
+      </div>
+      <h3 class="user-name">{{user.first_name}} {{user.last_name}}</h3>
+    </div>
+    <div class="col-md-10">
+      <h4><small class="curation-title"><span class="oi oi-people"></span> Software Engineers</small></h4>
+      <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+    </div>
+  </div>
+</div>-->

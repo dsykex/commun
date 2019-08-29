@@ -9,27 +9,48 @@
 .banner
 {
     background:rgba(0,0,0,0.6);
-    padding:20px;
+    padding:10px;
     text-align:center;
     margin-bottom:50px;
 }
 
-.greeting-txt
+.avatar img 
 {
-    font-size:19px;
-}
-
-.ava {
-    height:150px;
-    width:150px;
-    border-radius:50%;
-    overflow:hidden;
-}
-
-.ava img {
-    height:150px;
-    width:150px;
+    height: 100px;
+    width:100px;
+    border-radius:20px;
     text-align:center;
+}
+
+.user-name
+{
+    font-size:0.9em;
+    color:#777;
+    margin-top:8px;
+    text-align: center;
+}
+
+.feed-user-name{
+    font-size:0.6em;
+    color:#777;
+}
+
+.curation-title{
+    font-size:0.5em;
+    background:#2582fc;
+    color:#fff;
+    border-radius:7px;
+    padding:7px;
+}
+
+.bg-overlay
+{
+    background:rgba(0,0,0,0.7);
+    min-width:100%;
+    min-height:100%;
+    position: fixed;
+    z-index: -5;
+    opacity:0.8;
 }
 
 .bg
@@ -40,6 +61,21 @@
     height:100%;
     background: #000;
     opacity:0.4;
+}
+
+.title
+{
+    font-size:17px;
+    color:#888;
+}
+
+.date
+{
+    margin:0;
+    font-size:20;
+    font-style:italic;
+    color:#777;
+    text-decoration: underline;
 }
 
 .wrapper{
@@ -69,25 +105,19 @@
 .panel {
     background:rgba(255,255,255,0.6);
     padding:15px;
-    width:100%;
-    border-radius:10px;
-    border-top-left-radius:0px;
-    border-top-right-radius:0px;
+    border-radius:4px;
     box-shadow:1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.post-wrapper
+#sticky-sidebar
 {
-    margin-top:70px;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
 }
 
-.avatar
-{
-    text-align: center;
-    background:rgba(0,0,0,0.4);
-    border-radius:7px;
-    border:#2582fc;
-    margin:10px;
+.name{
+    color:#fff;
+    font-size:18px;
 }
 
 .header

@@ -8,9 +8,14 @@ body, html, *{
     text-align: center;
 }
 
-.border
+.borderr
 {
     border:1px solid #000;
+}
+
+.paddingless
+{
+    padding:0;
 }
 
 .yellow-button
