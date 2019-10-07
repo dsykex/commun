@@ -6,6 +6,23 @@
     border-radius:10px;
 }
 
+.name{
+    color:#fff;
+    font-size:18px;
+}
+
+.title
+{
+    font-size:17px;
+    color:#ccc;
+}
+
+#sticky-sidebar
+{
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+}
+
 .banner
 {
     background:rgba(0,0,0,0.6);
@@ -30,12 +47,12 @@
     text-align: center;
 }
 
-.feed-user-name{
+.feed-user-name {
     font-size:0.6em;
     color:#777;
 }
 
-.curation-title{
+.curation-title {
     font-size:0.5em;
     background:#2582fc;
     color:#fff;
@@ -78,11 +95,10 @@
     text-decoration: underline;
 }
 
-.wrapper{
+.wrapper {
     margin-top:70px;
     background:rgba(255,255,255,0.5);
     border-radius:9px;
-
 }
 
 .interest-input
@@ -104,15 +120,15 @@
 
 .panel {
     background:rgba(255,255,255,0.6);
-    padding:15px;
+    padding:20px;
     border-radius:4px;
     box-shadow:1px 1px 3px rgba(0,0,0,0.2);
 }
 
-#sticky-sidebar
-{
-    height:100vh;
-    background:rgba(0,0,0,0.7);
+.post-body{
+    background:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.6));
+    border-radius:7px;
+    padding:10px;
 }
 
 .name{

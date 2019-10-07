@@ -1,4 +1,6 @@
-import { Component, ViewChild, ElementRef, OnInit, AfterContentInit, } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterContentInit, NgZone, } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import * as firebase from './fb';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,23 @@ import { Component, ViewChild, ElementRef, OnInit, AfterContentInit, } from '@an
 })
 export class AppComponent implements OnInit {
 
-  title = 'WWCommunity';
-  
+  public user: any = {};
+  constructor(public router: Router, public route: ActivatedRoute, public zone: NgZone)
+  {
+  }
+
   ngOnInit()
   {
-    
+
+    //routerSub.unsubscribe();
+  }
+
+  logout()
+  {
+    firebase.default.auth().signOut().then(()=>{
+      this.zone.run(()=>{
+        this.router.navigateByUrl('/landing')
+      })
+    });
   }
 }

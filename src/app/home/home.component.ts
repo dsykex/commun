@@ -41,23 +41,26 @@ export class HomeComponent implements OnInit{
   };
 
   constructor(public fs: AngularFirestore, public sanitizer: DomSanitizer, public authService: AuthService, public zone: NgZone, public http: HttpClient, public router: Router)
-   { 
-    this.authService.getUserInfo().then(uInfo => {
-        this.user = uInfo;
-        if(!this.user)
-        {
-          this.zone.run(() => {
-            this.router.navigateByUrl('landing');
-          });
-        }
-        console.log(this.user);
-    });
-  }
+  { 
+  this.authService.getUserInfo().then(uInfo => {
+      this.user = uInfo;
+
+      if(!this.user)
+      {
+        this.zone.run(() => {
+          this.router.navigateByUrl('landing');
+        });
+      }
+
+      console.log(this.user);
+  });
+}
 
   logout()
   {
     firebase.auth().signOut().then(() => {
       this.zone.run(()=>{
+        
         this.router.navigateByUrl('landing');
       })
     })

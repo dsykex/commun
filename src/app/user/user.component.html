@@ -1,3 +1,61 @@
-<p>
-  user works!
-</p>
+<div class="modal fade" id="jobsModal" tabindex="-1" role="dialog" aria-labelledby="jobsModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h6 class="text-center">{{user.first_name}}'s Completed Jobs</h6><br>
+        <ul class="list-group bg-light">
+            <li class="list-group-item"><span class="oi oi-project"></span> Website UI Layout, for <a href="#">Jacob</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="userLoaded">
+  <div class="row">
+    <div class="col-md-3 animated slideInDown">
+      <div class="user-panel text-center position-sticky">
+        <div class="avatar  mx-auto my-3">
+            <img src="../../assets/downtown.jpg" />
+        </div>
+        <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
+        <h4 class="user-title">Software Developer, UI/UX Specialist</h4>
+        <br>
+        <ul class="list-group bg-light">
+          <a class="list-group-item list-group-item-action active"><span class="oi oi-browser"></span> My Portfolio</a>
+          <a href="#" data-toggle="modal" data-target="#jobsModal" class="list-group-item list-group-item-action"><span class="oi oi-project"></span>My Jobs <span class="badge badge-dark">{{user.jobs.length}}</span></a>
+          <a href="#" class="list-group-item list-group-item-action"><span class="oi oi-star"></span>My Events <span class="badge badge-dark">{{user.events.length}}</span></a>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9 my-3 animated slideInRight">
+      <h3 class="callout">{{user.first_name}}'s Content</h3>
+      
+      <div class="row my-5">
+        <div class="col-md-1 	d-md-block d-sm-none" style="padding:0"> <!-- Small Vis. -->
+            <div class="feed-avatar">
+                <img src="../../assets/downtown.jpg" />
+            </div>
+        </div>
+        <div class="col-md-11 post-body">
+            <p class="post-caption">Nice piece of work by your truly!</p>
+            <img class="post-attachment" src="../../assets/summer.png" class="img-fluid" />
+        </div>
+      </div>
+      <div class="row my-5">
+        <div class="col-md-1 d-sm-none d-md-block" style="padding:0">
+            <div class="feed-avatar">
+                <img src="../../assets/downtown.jpg" />
+            </div>
+        </div>
+        <div class="col-md-11 post-body">
+            <p class="post-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <img class="post-attachment" src="../../assets/downtown.jpg" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

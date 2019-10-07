@@ -18,6 +18,21 @@ body, html, *{
     padding:0;
 }
 
+.avatar img 
+{
+    height: 200px;
+    width:200px;
+    text-align:center;
+}
+
+.avatar {
+    text-align: center;
+    width:100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
 .yellow-button
 {
     padding: 10px 55px 10px 55px !important; 
@@ -28,4 +43,27 @@ body, html, *{
     background:none; 
     border:3px solid #f9f100;
     
+}
+
+.feed-avatar
+{
+    margin:0 auto;
+    border-radius:50%;
+    width:60px; 
+    height:60px;
+    border:3px solid #fff;
+    overflow: hidden;
+}
+
+.feed-avatar img{
+    width:80px;
+    height:80px;
+}
+
+.callout{
+    background:linear-gradient(to top, rgba(255,255,255,0.3), rgba(255,255,255,0.8));
+    padding:7px;
+    text-align:center;
+    border-radius: 10px;
+    font-size:1.1em;
 }

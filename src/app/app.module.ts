@@ -16,6 +16,10 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './group/group.component';
 import { UsersComponent } from './users/users.component';
+import { ChallengesComponent } from './challenges/challenges.component';
+import { MyJobsComponent } from './my-jobs/my-jobs.component';
+import { MyEventsComponent } from './my-events/my-events.component';
+import { CpComponent } from './cp/cp.component';
 
 export const fbConfig = {
   apiKey: "AIzaSyDdeEahrBiiFWcghRiZRxZWYcTSPCgdYo8",
@@ -36,7 +40,11 @@ export const fbConfig = {
     ProfileSettingsComponent,
     GroupsComponent,
     GroupComponent,
-    UsersComponent
+    UsersComponent,
+    ChallengesComponent,
+    MyJobsComponent,
+    MyEventsComponent,
+    CpComponent
   ],
   imports: [
     BrowserModule,

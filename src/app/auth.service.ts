@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from './fb';
 import { Observable } from 'rxjs';
 
 export interface tvarr {
@@ -16,21 +16,23 @@ export class AuthService {
   public getUserInfo() : Promise<any>
   {
     let userObs = new Promise(resolve => {
-       firebase.auth().onAuthStateChanged(authData => {
+       firebase.default.auth().onAuthStateChanged(authData => {
         if(!authData)
         {
           resolve({});
         }
         else
         {
-          let db = firebase.firestore().collection('users');
-          db.doc(authData.email).get().then(user => { 
-            if(user.exists)
-            {
-              resolve(user.data());
-            }
+          let db = firebase.default.firestore().collection('users');
+          db.where('email', '==', authData.email).get().then(user => { 
+            user.docChanges().forEach(u => {
+              let user = u.doc.data();
+              user['id'] = u.doc.id;
+              
+              resolve(user);
+            })
           })
-        }
+        } 
       })
     });
 

@@ -13,26 +13,6 @@ import { Router } from '@angular/router';
 export class LandingComponent implements OnInit {
 
   constructor(public fs: AngularFirestore, public http: HttpClient, public router: Router, public zone: NgZone) { 
-    
-  }
-
-  @ViewChild('bgVid', {static: true}) vid: ElementRef;
-
-  public user: any = {};
-  public hasUser: boolean;
-  public errorMsg: string;
-
-  public formdata: any;
-  public emailid: any;
-
-  public signUpActive: boolean;
-  public loginActive: boolean;
-
-  ngOnInit() 
-  {
-    //this.vid.nativeElement.muted = 'muted';
-    this.loginActive=true;
-    //firebase.auth().signOut().then(()=>{});
     firebase.auth().onAuthStateChanged(authData => {
       console.log(authData);
       if(authData)
@@ -54,6 +34,25 @@ export class LandingComponent implements OnInit {
         });*/
       }
     });
+  }
+
+  @ViewChild('bgVid', {static: true}) vid: ElementRef;
+
+  public user: any = {};
+  public hasUser: boolean;
+  public errorMsg: string;
+
+  public formdata: any;
+  public emailid: any;
+
+  public signUpActive: boolean;
+  public loginActive: boolean;
+
+  ngOnInit() 
+  {
+    //this.vid.nativeElement.muted = 'muted';
+    this.loginActive=true;
+    //firebase.auth().signOut().then(()=>{});
   }
 
   onClickSubmit(data) {
@@ -102,7 +101,7 @@ export class LandingComponent implements OnInit {
             rank: 'm'
           };
 
-          users.doc(this.user.email).set(newUser).then(()=> {
+          users.doc().set(newUser).then(()=> {
             firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(() => {
               this.router.navigateByUrl('/home');
             });
