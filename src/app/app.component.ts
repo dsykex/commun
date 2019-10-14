@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit, AfterContentInit, NgZone, } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from './fb';
+import {AuthService} from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,23 @@ import * as firebase from './fb';
 export class AppComponent implements OnInit {
 
   public user: any = {};
-  constructor(public router: Router, public route: ActivatedRoute, public zone: NgZone)
+  constructor(public router: Router, public route: ActivatedRoute, public zone: NgZone, public authService: AuthService)
   {
+
   }
 
   ngOnInit()
   {
-
+    this.authService.getUserInfo().then(uInfo => {
+      this.user = uInfo;
+      
+      if(!this.user)
+      {
+        this.zone.run(() => {
+          this.router.navigateByUrl('landing');
+        });
+      }
+    });
     //routerSub.unsubscribe();
   }
 

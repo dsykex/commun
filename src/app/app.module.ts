@@ -20,6 +20,7 @@ import { ChallengesComponent } from './challenges/challenges.component';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { CpComponent } from './cp/cp.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 export const fbConfig = {
   apiKey: "AIzaSyDdeEahrBiiFWcghRiZRxZWYcTSPCgdYo8",
@@ -44,7 +45,8 @@ export const fbConfig = {
     ChallengesComponent,
     MyJobsComponent,
     MyEventsComponent,
-    CpComponent
+    CpComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

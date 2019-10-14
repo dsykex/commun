@@ -16,7 +16,7 @@ export class AuthService {
   public getUserInfo() : Promise<any>
   {
     let userObs = new Promise(resolve => {
-       firebase.default.auth().onAuthStateChanged(authData => {
+      firebase.default.auth().onAuthStateChanged(authData => {
         if(!authData)
         {
           resolve({});
@@ -37,5 +37,10 @@ export class AuthService {
     });
 
     return userObs;
+  }
+
+  public isAdmin(user)
+  {
+    return user.rank == 'a';
   }
 }

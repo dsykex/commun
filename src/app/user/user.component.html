@@ -14,26 +14,59 @@
   </div>
 </div>
 
+<div class="modal" id="phoneModal" role="dialog" aria-labelledby="phoneModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <h4><span class="ion-ios-telephone"></span> 614-419-3829</h4>
+        </div>
+        <div class="modal-footer bg-dark">
+          <a class="btn btn-block text-white" href="tel:+16144193829">Call</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="loading" *ngIf="!userLoaded">
+  <div class="animated bounceIn">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+
 <div class="container" *ngIf="userLoaded">
   <div class="row">
     <div class="col-md-3 animated slideInDown">
       <div class="user-panel text-center position-sticky">
-        <div class="avatar  mx-auto my-3">
+        <div class="avatar mx-auto my-3">
             <img src="../../assets/downtown.jpg" />
         </div>
         <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
         <h4 class="user-title">Software Developer, UI/UX Specialist</h4>
+        <hr>
+        <p><span class="ion-email"></span> dezmensykes.ds@gmail.com</p>
         <br>
+        <p class="text-left bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       
         <ul class="list-group bg-light">
-          <a class="list-group-item list-group-item-action active"><span class="oi oi-browser"></span> My Portfolio</a>
-          <a href="#" data-toggle="modal" data-target="#jobsModal" class="list-group-item list-group-item-action"><span class="oi oi-project"></span>My Jobs <span class="badge badge-dark">{{user.jobs.length}}</span></a>
-          <a href="#" class="list-group-item list-group-item-action"><span class="oi oi-star"></span>My Events <span class="badge badge-dark">{{user.events.length}}</span></a>
+          <a class="list-group-item list-group-item-action "><span class="oi oi-browser"></span> My Portfolio</a>
+          <a  data-toggle="modal" data-target="#phoneModal"  class="list-group-item list-group-item-action"><span class="ion-ios-telephone"></span> Phone Number</a>
+          <a href="#" class="list-group-item list-group-item-action">Edit Profile</a>
         </ul>
+        <div class="d-flex justify-content-center p-3">
+          <span class="iconic iconic-social-facebook iconic-md" title="social facebook" aria-hidden="true"></span>
+          <span class="oi oi-flame"></span>
+          <span class="social-icon ion-social-linkedin"></span>
+          <span class="social-icon ion-social-facebook"></span>
+          <span class="social-icon ion-social-twitter"></span>
+          <span class="social-icon ion-social-instagram"></span>
+          <span class="social-icon ion-social-youtube"></span>
+        </div>
       </div>
     </div>
     <div class="col-md-9 my-3 animated slideInRight">
-      <h3 class="callout">{{user.first_name}}'s Content</h3>
-      
       <div class="row my-5">
         <div class="col-md-1 	d-md-block d-sm-none" style="padding:0"> <!-- Small Vis. -->
             <div class="feed-avatar">

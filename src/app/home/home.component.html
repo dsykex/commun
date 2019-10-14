@@ -1,26 +1,29 @@
-<div class="container-fluid">
+<div class="loading" *ngIf="!pageLoaded">
+    <div class="animated bounceIn">
+      <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="pageLoaded">
     <div class="row">
-        <div class="col-md-2 .d-xs-none .d-md-block py-3 position-fixed animated slideInLeft" id="sticky-sidebar">
-            <div class="row">
-                <div class="col-12 text-center">
-                <div class="avatar text-center mx-auto my-3">
-                    <img src="../../assets/downtown.jpg" />
-                </div>
-                <h4 class="name">{{user.first_name}} {{user.last_name}}</h4>
-                <p class="title">Software Developer, UX Specialist</p>
-                <hr>
-                <ul class="list-group bg-dark">
-                  <li class="list-group-item bg-dark"><a class="text-white" routerLink="/user/{{user.id}}">Profile</a></li>
-                  <li class="list-group-item bg-dark"><a class="text-white" routerLink="/my-groups">Groups</a></li>
-                  <li class="list-group-item bg-dark"><a class="text-white" routerLink="/my-requests">Requests</a></li>
-                  <li class="list-group-item bg-dark"><a class="text-white" routerLink="/profile-settings">Profile Settings</a></li>
-                  <li class="list-group-item bg-dark text-white" (click)="logout()" aria-current="page">Logout</li>
-                </ul>
+        <div class="user-panel col-md-2 animated slideInDown text-center">
+          <div class="row">
+            <div class="col-12">
+              <div class="avatar text-center mx-auto my-3">
+                  <img src="../../assets/downtown.jpg" />
+              </div>
+            
+              <h4 class="name">{{user.first_name}} {{user.last_name}}</h4>
+              <p class="title my-3">Software Developer, UI/UX Specialist</p>
+            
+              <a class="btn my-3 btn-dark text-center" routerLink="/user/{{user.id}}">View Profile</a>
             </div>
           </div>
         </div>
-        <div class="col-md-10 col-sm-12  offset-md-2 animated fadeInDown" id="main">
-            <div class="panel text-center">
+        <div class="col-md-10 col-sm-12 animated fadeInDown" id="main">
+            <!--<div class="panel text-center">
                 <p class="date">{{dayArray[dayNumber]}} - {{date}}</p>
                 <h2>Inspirational Sharings</h2>
                 <p>Create a post that motivates and inspires you in your day to day creative activities.</p>
@@ -29,22 +32,41 @@
                     <ckeditor *ngIf="showEditor" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'highlight', 'indentBlock', 'alignment' ] }" [editor]="Editor" [(ngModel)]="postData.editorData"></ckeditor>
                     <a class="btn btn-light" (click)="publishPost()">Post</a>
                 </div>
+            </div>-->
+            <div class="panel my-2 text-center">
+              <div class="btn-group w-50 my-2" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-dark"><span class="oi oi-camera-slr"></span></button>
+                <button type="button" class="btn btn-dark"><span class="oi oi-video"></span></button>
+              </div>
+              <div class="vw-50" *ngIf="false">
+                  <ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'highlight', 'indentBlock', 'alignment' ] }" [editor]="Editor" [(ngModel)]="postData.editorData"></ckeditor>
+                  <a class="btn my-3 btn-outline-secondary text-center" (click)="createPost()">Post</a>
+              </div>
             </div>
-           
-            <div class="my-5">
-              <div class="row">
-                <div class="col-md-1 text-center paddingless">
-                  <div class="feed-avatar text-center">
-                      <img src="../../assets/downtown.jpg" class="mx-auto" alt="" />
+         
+            <div class="row p-2">
+              <div class="col">
+                <div class="post post-body">
+                    <div class="row">
+                      <div class="col col-md-1 p-0 d-none d-sm-none d-md-block">
+                          <div class="feed-avatar offset-avatar" style="top:500px;">
+                              <img src="../../assets/downtown.jpg"  alt="" />
+                          </div>
+                      </div>
+                      <div class="col px-1">
+                          <small class="feed-user-name">{{user.first_name}} {{user.last_name}} posted,</small> 
+                          <small class="curation-title mx-3 float-right"><span class="oi oi-people"></span> Graphic Designers</small>
+                      </div>
+                    </div>
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                          <div class="post-content">
+                              <p class="post-caption">Nice piece of work by your truly!</p>
+                              <img class="post-attachment" src="../../assets/Chip-NSG.png" class="img-fluid" />
+                          </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-11 p-4 post-body">
-                  <h4><small class="feed-user-name">{{user.first_name}} {{user.last_name}} posted,</small> <small class="curation-title mx-3 float-right"><span class="oi oi-people"></span> Graphic Designers</small></h4><br>
-                  <div class="post-content py-2">
-                      <p class="post-caption">Nice piece of work by your truly!</p>
-                      <img class="post-attachment" src="../../assets/Chip-NSG.png" class="img-fluid" />
-                  </div>
-                </div>
               </div>
             </div>
         </div>

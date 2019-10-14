@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
   user: any = {};
   userLoaded: boolean = false;
 
-  constructor(public authService: AuthService, public router: Router, public route: ActivatedRoute, public zone: NgZone) { }
+  constructor(public authService: AuthService, public router: Router, public route: ActivatedRoute, public zone: NgZone) {  }
 
   ngOnInit() {
     this.route.params.subscribe(_p => {
@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
             
             this.userLoaded = true;
             console.log(this.user);
-          })
+          });
         })
 
       });
