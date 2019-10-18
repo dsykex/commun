@@ -7,8 +7,9 @@
 }
 
 .username{
-    font-size:1.3em;
-    
+    font-size:2em;
+    color:#fff;
+    text-shadow: 2px 2pox 4px rgba(0,0,0,0.5);
 }
 
 .loading{
@@ -20,11 +21,26 @@
     transform:translate(-50%, -50%);
 }
 
+hr{
+    border-bottom:0.2px solid rgba(255,255,255,0.4);
+}
+
 .social-icon
 {
     font-size:25px;
-    color:#343a40;
+    color:#fff;
     margin:5px;
+    position: relative;
+}
+
+.social-link{
+    position: relative;
+    top:0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.social-link{
+    top:-5px;
 }
 
 .oi
@@ -35,7 +51,42 @@
 .user-title
 {
     font-size:0.9em;
-    color:#333;
+    color:#fff;
+    text-shadow: 2px 2ox 3px rgba(0,0,0,0.7);
+
+}
+
+.overlay
+{
+    width:100%;
+    height: 100%;
+    background:rgba(0,0,0,0.6);
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -8;
+}
+
+.banner{
+    width:100%;
+    position: relative;
+ 
+    padding:7px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 7px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+
+.banner-img{
+    position:absolute;
+    top:25%;
+    left:50%;
+    transform: translate(-50%, -25%);
+    object-fit: cover;
+    z-index: -9;
 }
 
 .list-group-item-action.active{

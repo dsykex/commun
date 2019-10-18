@@ -38,15 +38,34 @@
 
 <div class="container" *ngIf="userLoaded">
   <div class="row">
-    <div class="col-md-3 animated slideInDown">
-      <div class="user-panel text-center position-sticky">
-        <div class="avatar mx-auto my-3">
+    <div class="col col-12">
+      <div class="banner animated slideInDown">
+        <div class="overlay"></div>
+        <img src="../../assets/downtown.jpg" alt="" class="banner-img">
+        <div class="avatar mx-auto my-3 p-2">
             <img src="../../assets/downtown.jpg" />
         </div>
         <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
         <h4 class="user-title">Software Developer, UI/UX Specialist</h4>
+        <hr class="w-50">
+        <div class="d-flex justify-content-center p-3">
+            <a href="" class="social-link"><span class="social-icon ion-social-linkedin"></span></a>
+            <a href="" class="social-link"><span class="social-icon ion-social-facebook"></span></a>
+            <a href="" class="social-link"><span class="social-icon ion-social-twitter"></span></a>
+            <a href="" class="social-link"><span class="social-icon ion-social-instagram"></span></a>
+            <a href="" class="social-link"><span class="social-icon ion-social-youtube"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 animated fadeInLeft">
+      <div class="user-panel text-center position-sticky">
+        <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
+        <h4 class="user-title">Software Developer, UI/UX Specialist</h4>
         <hr>
-        <p><span class="ion-email"></span> dezmensykes.ds@gmail.com</p>
+
+        <p><span class="ion-email"></span> About Me</p>
         <br>
         <p class="text-left bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
        
@@ -55,15 +74,6 @@
           <a  data-toggle="modal" data-target="#phoneModal"  class="list-group-item list-group-item-action"><span class="ion-ios-telephone"></span> Phone Number</a>
           <a href="#" class="list-group-item list-group-item-action">Edit Profile</a>
         </ul>
-        <div class="d-flex justify-content-center p-3">
-          <span class="iconic iconic-social-facebook iconic-md" title="social facebook" aria-hidden="true"></span>
-          <span class="oi oi-flame"></span>
-          <span class="social-icon ion-social-linkedin"></span>
-          <span class="social-icon ion-social-facebook"></span>
-          <span class="social-icon ion-social-twitter"></span>
-          <span class="social-icon ion-social-instagram"></span>
-          <span class="social-icon ion-social-youtube"></span>
-        </div>
       </div>
     </div>
     <div class="col-md-9 my-3 animated slideInRight">
