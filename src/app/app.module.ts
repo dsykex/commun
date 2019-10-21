@@ -21,7 +21,8 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { CpComponent } from './cp/cp.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
+ 
 export const fbConfig = {
   apiKey: "AIzaSyDdeEahrBiiFWcghRiZRxZWYcTSPCgdYo8",
   authDomain: "warhol-a1a0e.firebaseapp.com",
@@ -54,6 +55,7 @@ export const fbConfig = {
     ReactiveFormsModule,
     CKEditorModule,
     HttpClientModule,
+    AngularEditorModule,
     AngularFireModule.initializeApp(fbConfig),
     AngularFirestoreModule,
     AppRoutingModule

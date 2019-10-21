@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-10 col-sm-12 animated fadeInDown" id="main">
+        <div class="col-md-10 col-sm-12" id="main">
             <!--<div class="panel text-center">
                 <p class="date">{{dayArray[dayNumber]}} - {{date}}</p>
                 <h2>Inspirational Sharings</h2>
@@ -38,15 +38,13 @@
                 <button type="button" class="btn btn-dark"><span class="oi oi-camera-slr"></span></button>
                 <button type="button" class="btn btn-dark"><span class="oi oi-video"></span></button>
               </div>
-              <div class="vw-50" *ngIf="false">
-                  <ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'highlight', 'indentBlock', 'alignment' ] }" [editor]="Editor" [(ngModel)]="postData.editorData"></ckeditor>
-                  <a class="btn my-3 btn-outline-secondary text-center" (click)="createPost()">Post</a>
-              </div>
+              <textarea rows="6" [(ngModel)]="outputHtml"></textarea>
+              <button class="btn btn-dark btn-lg" (click)="createPost">Post</button>
             </div>
          
             <div class="row p-2">
               <div class="col">
-                <div class="post post-body">
+                <div *ngFor="let p of posts" class="post post-body animated fadeInDown">
                     <div class="row">
                       <div class="col col-md-1 p-0 d-none d-sm-none d-md-block">
                           <div class="feed-avatar offset-avatar" style="top:500px;">
@@ -54,15 +52,16 @@
                           </div>
                       </div>
                       <div class="col px-1">
-                          <small class="feed-user-name">{{user.first_name}} {{user.last_name}} posted,</small> 
+                          <small class="feed-user-name">{{user.first_name}} {{user.last_name}} posted, {{posts.length}}</small> 
                           <small class="curation-title mx-3 float-right"><span class="oi oi-people"></span> Graphic Designers</small>
                       </div>
                     </div>
                     <div class="row my-4">
                       <div class="col-md-12">
                           <div class="post-content">
-                              <p class="post-caption">Nice piece of work by your truly!</p>
-                              <img class="post-attachment" src="../../assets/Chip-NSG.png" class="img-fluid" />
+                              <div [innerHtml]="p.content"></div>
+                              <!--<p class="post-caption">Nice piece of work by your truly!</p>
+                              <img class="post-attachment" src="../../assets/Chip-NSG.png" class="img-fluid" />-->
                           </div>
                       </div>
                     </div>

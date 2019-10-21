@@ -9,6 +9,7 @@ import { print } from 'util';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {AngularEditorConfig} from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class HomeComponent implements OnInit{
   public user: any = {};
   public newpost: any = {};
-  public posts: any = [];
+  public posts: Array<{}> = [];
   public arr:  any = [1,2,3,4,5,6,7,8,9];
   public Editor = ClassicEditor;
   public dayArray = [
@@ -34,11 +35,31 @@ export class HomeComponent implements OnInit{
   public showEditor: boolean = false;
   public dayNumber = new Date().getDay();
   public date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString();
-  public outputHtml: any = "<p>gg</p>";
+  public outputHtml: any = "";
   public pageLoaded: boolean = false;
   
   public postData: any = {
     editorData: ''
+  };
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '350',
+    minHeight: '350',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Share your work.',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+
+    sanitize: true,
+    toolbarPosition: 'top',
   };
 
   constructor(public fs: AngularFirestore, public sanitizer: DomSanitizer, public authService: AuthService, public zone: NgZone, public http: HttpClient, public router: Router)
@@ -74,11 +95,12 @@ export class HomeComponent implements OnInit{
       this.pageLoaded=true;
 
       let db = firebase.firestore();
-      let postCollection = db.collection('posts').orderBy('createdAt').onSnapshot(_postsSnap => {
-        this.posts = _postsSnap.docs;
+      let postCollection = db.collection('posts').onSnapshot(_postsSnap => {
+       _postsSnap.forEach(doc => {
+         let newDoc = doc.data(); newDoc.id = doc.id;
+         this.posts.push(newDoc);
+       })
         console.log(this.posts);
-        
-        
       }, err => { });
       
     });
