@@ -52,7 +52,7 @@
 }
 
 .curation-title {
-    font-size:0.5em;
+    font-size:0.8em;
     background:#2582fc;
     color:#fff;
     border-radius:7px;
@@ -112,6 +112,11 @@
     color:#fff;
 }
 
+.caption-input{
+    border-radius:7px;
+    padding:7px;
+}
+
 .close-button
 {
     margin-bottom:30px;
@@ -123,9 +128,9 @@
 
 .user-panel
 {
-    background:rgba(255,255,255,0.8);
+    background:linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0.5));
     padding:7px;
-    position: sticky;
+    height:300px;
     border-bottom-left-radius:8px;
     border-bottom-right-radius:8px;
 }

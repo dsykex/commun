@@ -58,15 +58,13 @@
       </div>
     </div>
   </div>
-  <div class="row">
+
+  <!--  USER SECTION  -->
+  <div class="row my-3">
     <div class="col-md-3 animated fadeInLeft">
       <div class="user-panel text-center position-sticky">
-        <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
-        <h4 class="user-title">Software Developer, UI/UX Specialist</h4>
-        <hr>
-
         <p><span class="ion-person"></span> About Me</p>
-        <br>
+       
         <p class="text-left bio p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
        
         <ul class="list-group bg-light">
@@ -77,26 +75,15 @@
       </div>
     </div>
     <div class="col-md-9 animated slideInRight">
-      <div class="row">
+      <div class="row post" *ngFor="let p of posts">
         <div class="col-md-1 	d-md-block d-sm-none" style="padding:0"> <!-- Small Vis. -->
             <div class="feed-avatar">
                 <img src="../../assets/downtown.jpg" />
             </div>
         </div>
         <div class="col-md-11 post-body">
-            <p class="post-caption">Nice piece of work by your truly!</p>
+            <p class="post-caption">{{p.caption}}</p>
             <img class="post-attachment" src="../../assets/summer.png" class="img-fluid" />
-        </div>
-      </div>
-      <div class="row my-5">
-        <div class="col-md-1 d-sm-none d-md-block" style="padding:0">
-            <div class="feed-avatar">
-                <img src="../../assets/downtown.jpg" />
-            </div>
-        </div>
-        <div class="col-md-11 post-body">
-            <p class="post-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <img class="post-attachment" src="../../assets/downtown.jpg" class="img-fluid" />
         </div>
       </div>
     </div>

@@ -17,14 +17,15 @@ import * as firebase from '../fb';
   styleUrls: ['./user.component.scss']
 })
 
-export class UserComponent implements OnInit {
+export class UserComponent implements AfterViewInit {
 
   user: any = {};
   userLoaded: boolean = false;
+  posts: Array<{}> = [];
 
   constructor(public authService: AuthService, public router: Router, public route: ActivatedRoute, public zone: NgZone) {  }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.route.params.subscribe(_p => {
       let id = _p['id'];
       
@@ -34,22 +35,21 @@ export class UserComponent implements OnInit {
       users.doc(id).get().then(u => {
         let uid = u.id;
         this.user = u.data();
-        
-        let jobs = db.collection('jobs').where('uid', '==', uid).get().then(jobs => {
-          this.user.jobs = jobs.docs;
+        this.userLoaded=true;
 
-          let events = db.collection('jobs').where('uid', '==', uid).get().then(events => {
-            this.user.events = events.docs;
-            console.log('done');
-            
-            this.userLoaded = true;
-            console.log(this.user);
-          });
-        })
-
+        let postCollection = db.collection('posts').where('uid', '==', uid).orderBy('createdAt').onSnapshot(_postsSnap => {
+          if(_postsSnap.docChanges().length > 0) {
+            _postsSnap.docChanges().forEach(change => {
+              if(change.type==="added")
+              {
+                let newDoc = change.doc.data(); newDoc.id = change.doc.id;
+              
+                this.posts.unshift(newDoc);
+              }
+            })
+          }
+        }, err => { });
       });
-      
     })
   }
-
 }

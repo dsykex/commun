@@ -10,6 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -37,77 +38,62 @@ export class HomeComponent implements OnInit{
   public date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString();
   public outputHtml: any = "";
   public pageLoaded: boolean = false;
-  
-  public postData: any = {
-    editorData: ''
-  };
+  public postCaption: string;
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '350',
-    minHeight: '350',
-    maxHeight: 'auto',
-    width: 'auto',
-    minWidth: '0',
-    translate: 'yes',
-    enableToolbar: true,
-    showToolbar: true,
-    placeholder: 'Share your work.',
-    defaultParagraphSeparator: '',
-    defaultFontName: '',
-    defaultFontSize: '',
-
-    sanitize: true,
-    toolbarPosition: 'top',
-  };
-
-  constructor(public fs: AngularFirestore, public sanitizer: DomSanitizer, public authService: AuthService, public zone: NgZone, public http: HttpClient, public router: Router)
+  constructor(public fs: AngularFirestore, public ac: AppComponent, public sanitizer: DomSanitizer, public authService: AuthService, public zone: NgZone, public http: HttpClient, public router: Router)
   { 
 
   }
 
   createPost()
   {
-    let db = firebase.firestore();
-    let posts = db.collection('posts');
-
-    let newPost = {
+    this.authService.getUserInfo().then(uInfo => {
+      let me = uInfo;
+      let db = firebase.firestore();
+      let posts = db.collection('posts');
       
-    };
-
-    posts.add(newPost).then(()=> {
-
-    });
+  
+      let newPost = {
+        createdAt: Date.now(),
+        caption: this.postCaption,
+        uid: me.id
+      };
+  
+      posts.add(newPost).then(()=> {
+        console.log('done')
+      });
+    })
   }
 
   ngOnInit()
   {
     this.authService.getUserInfo().then(uInfo => {
-      this.user = uInfo;
+      this.zone.run(() => {
+        this.user = uInfo;
       
-      if(!this.user)
-      {
-        this.zone.run(() => {
-          this.router.navigateByUrl('landing');
-        });
-      }
-      this.pageLoaded=true;
-
-      let db = firebase.firestore();
-      let postCollection = db.collection('posts').onSnapshot(_postsSnap => {
-       _postsSnap.forEach(doc => {
-         let newDoc = doc.data(); newDoc.id = doc.id;
-         this.posts.push(newDoc);
-       })
-        console.log(this.posts);
-      }, err => { });
-      
+        if(!this.user)
+        {
+            this.router.navigateByUrl('landing');
+        }
+        this.pageLoaded=true;
+      })
     });
   }
 
   ngAfterViewInit()
   {
-
+    
+    let db = firebase.firestore();
+    let postCollection = db.collection('posts').orderBy('createdAt').onSnapshot(_postsSnap => {
+     _postsSnap.docChanges().forEach(change => {
+       if(change.type==="added")
+       {
+        let newDoc = change.doc.data(); newDoc.id = change.doc.id;
+       
+        this.posts.unshift(newDoc);
+       }
+     })
+      console.log(this.posts);
+    }, err => { });
   }
 }
